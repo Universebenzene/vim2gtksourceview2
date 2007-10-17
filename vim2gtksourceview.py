@@ -130,6 +130,9 @@ class VimParser:
     root.appendChild( description )
     # append the styles
     for s in styles:
+      fg = None
+      bg = None
+      
       elem = document.createElement('style')
       elem.setAttribute('name',s["name"])
       if 'foreground' in s:
@@ -149,7 +152,7 @@ class VimParser:
       except:
         pass
       try:
-        if fg and fg == "#bg":
+        if fg == "#bg":
           elem.setAttribute('foreground', bg)
       except:
         pass
