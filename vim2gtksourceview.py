@@ -45,7 +45,8 @@ class VimParser:
     "matchparen" : "bracket-match",
     "diffdelete" : "diff:removed-line",
     "diffadd"    : "diff:added-line",
-    "diffchange" : "diff:changed-line"
+    "diffchange" : "diff:changed-line",
+    "linenr"     : "line-numbers"
   }
 
   def __init__(self, options):
