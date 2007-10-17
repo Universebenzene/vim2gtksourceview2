@@ -42,7 +42,10 @@ class VimParser:
     "type"       : "def:type",
     "statement"  : "def:statement",
     "keyword"    : "def:keyword",
-    "matchparen" : "bracket-match"
+    "matchparen" : "bracket-match",
+    "diffdelete" : "diff:removed-line",
+    "diffadd"    : "diff:added-line",
+    "diffchange" : "diff:changed-line"
   }
 
   def __init__(self, options):
