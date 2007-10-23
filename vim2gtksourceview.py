@@ -89,11 +89,14 @@ class VimParser:
     
   def parse_vim(self,f):
     out = []
-    for line in f:
-      rule = self.parse_vim_line(line)
-      if rule != None:
-        out.append(rule)
-    self.build_xml(out)
+    try:
+      for line in f:
+        rule = self.parse_vim_line(line)
+        if rule != None:
+          out.append(rule)
+      self.build_xml(out)
+    except:
+      pass
 
   def build_xml(self,styles):
     # build the document
@@ -124,9 +127,12 @@ class VimParser:
     # append the description
     description = document.createElement('_description')
     if self.options.description:
-      description.appendChild( document.createTextNode(self.options.description) )
+      description.appendChild( 
+        document.createTextNode(self.options.description) )
     elif self.found_name != None:
-      description.appendChild( document.createTextNode( "%s theme" % self.found_name.capitalize()) )
+      description.appendChild( 
+        document.createTextNode( 
+          "%s theme" % self.found_name.capitalize() ) )
     root.appendChild( description )
     # append the styles
     for s in styles:
@@ -165,7 +171,8 @@ class VimParser:
     xml.dom.ext.PrettyPrint(document)
   
 if __name__ == "__main__":
-  optParser = OptionParser()
+  usage = "Usage: vim2gtksourceview.py [options] < in.vim > out.xml"
+  optParser = OptionParser(usage=usage)
   optParser.add_option("-a", "--author", dest="author",
                   help="specify the author", metavar="AUTHOR")
   optParser.add_option("-v", "--version", dest="version",
