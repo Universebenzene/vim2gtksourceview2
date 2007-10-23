@@ -171,7 +171,7 @@ class VimParser:
     xml.dom.ext.PrettyPrint(document)
   
 if __name__ == "__main__":
-  usage = "Usage: vim2gtksourceview.py [options] < in.vim > out.xml"
+  usage = "Usage: %prog [options] < in.vim > out.xml"
   optParser = OptionParser(usage=usage)
   optParser.add_option("-a", "--author", dest="author",
                   help="specify the author", metavar="AUTHOR")
