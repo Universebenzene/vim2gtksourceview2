@@ -21,7 +21,7 @@ from xml.dom import minidom
 from optparse import OptionParser
 
 class VimParser:
-  NAME_REGEX = re.compile('^let .*colors_name\s+=\s+"(\w+)"$')
+  NAME_REGEX = re.compile('^let .*colors_name\s*=\s*"(\w+)"$')
   found_name = None
   
   mapping = {
@@ -92,7 +92,7 @@ class VimParser:
     try:
       for line in f:
         rule = self.parse_vim_line(line)
-        if rule != None:
+        if rule != None and len(rule) > 1:
           out.append(rule)
       self.build_xml(out)
     except:
