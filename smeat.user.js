@@ -7,8 +7,7 @@
 // @include       *
 // ==/UserScript==
 
-var questions = {
-  'A company cannot market or sell within a transactional email.': 'False',
+var questions = {'A company cannot market or sell within a transactional email.': 'False',
  'According to CAN-SPAM, may the unsub link in commercial emails be located below the fold if there are adequate visual cues for the recipient to scroll down?': 'Yes',
  'Addresses collected before the CAN-SPAM law took effect are exempt from the law.': 'False',
  'Are "the 4" CAN-SPAM inclusions required for non-commercial emails?': 'No',
@@ -24,6 +23,7 @@ var questions = {
  "CAN-SPAM requires senders to use ''ADV:'' in their subject lines.": 'False',
  'CAN-SPAM requires that the sender have a valid physical postal address and include that address in its commercial emails.': 'True',
  'CAN-SPAM requires working unsubscribe functionality in commercial emails (either through return email address or an internet-based mechanism such as a web page).': 'True',
+ 'Can individuals located in any state sue for violations of CAN-SPAM?': 'No',
  'Client transactional and relationship emails are free from any CAN-SPAM obligations.': 'False',
  'Compliance with CAN-SPAM does not guarantee deliverability.': 'True',
  'Does CAN-SPAM apply to emails sent by a US company to its European customers?': 'Yes',
@@ -49,9 +49,11 @@ var questions = {
  'Under CAN-SPAM, an individual does not have private right of action, but they can file a complaint with the FTC.': 'True',
  'Under CAN-SPAM, if an advertiser holds itself out as a division or line of business when sending email, the opt-out has to apply to the entire company.': 'False',
  'Under CAN-SPAM, what entity has the strongest power of enforcement?': 'FTC',
+ "Under CAN-SPAM, you must include clear and conspicuous notice in commercial emails of a recipient's ability to opt out, and the text can be in a different language than the rest of your email.": 'False',
  'Which of the following are likely to improve email deliverability?': 'All of the above',
  "Which of the following drive an email program's impact on a company brand?": 'Mailing cadence and IP address',
- 'Without "affirmative consent," a pre-existing business relationship is necessary to send commercial email under CAN-SPAM.': 'False'};
+ 'Without "affirmative consent," a pre-existing business relationship is necessary to send commercial email under CAN-SPAM.': 'False',
+ "Without ''affirmative consent,'' a pre-existing business relationship is necessary to send commercial email under CAN-SPAM.": 'False'};
 
 var can_spam = function () {
   var target = document.getElementById('can-spam');
