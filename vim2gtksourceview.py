@@ -16,7 +16,7 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys, re, xml.dom.ext
+import sys, re
 from xml.dom import minidom
 from optparse import OptionParser
 
@@ -94,9 +94,9 @@ class VimParser:
         rule = self.parse_vim_line(line)
         if rule != None and len(rule) > 1:
           out.append(rule)
-      self.build_xml(out)
-    except:
-      pass
+      return self.build_xml(out)
+    except Exception, e:
+      sys.stderr.write("Error: parse_vim: %s" % e)
 
   def build_xml(self,styles):
     # build the document
@@ -127,11 +127,11 @@ class VimParser:
     # append the description
     description = document.createElement('_description')
     if self.options.description:
-      description.appendChild( 
+      description.appendChild(
         document.createTextNode(self.options.description) )
     elif self.found_name != None:
-      description.appendChild( 
-        document.createTextNode( 
+      description.appendChild(
+        document.createTextNode(
           "%s theme" % self.found_name.capitalize() ) )
     root.appendChild( description )
     # append the styles
@@ -167,8 +167,8 @@ class VimParser:
           elem.setAttribute(x,s[x])
             
       root.appendChild(elem)
-    # print the doc
-    xml.dom.ext.PrettyPrint(document)
+     
+    return document.toprettyxml()
   
 if __name__ == "__main__":
   usage = "Usage: %prog [options] < in.vim > out.xml"
@@ -184,4 +184,4 @@ if __name__ == "__main__":
   (options, args) = optParser.parse_args()
   
   vimparser = VimParser(options)
-  vimparser.parse_vim(sys.stdin)
+  print vimparser.parse_vim(sys.stdin)
